@@ -1,0 +1,15 @@
+<div class="container">
+    <h4>Login Form</h4>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <label for="">Email</label>
+        <span *ngIf="form.get('Email')?.touched && !form.get('Email')?.valid"><i>Email is Required!!</i></span>
+        <input type="text" autocomplete="Email" formControlName="Email">
+
+        <label for="">Password</label>
+        <span *ngIf="form.get('Password')?.touched && !form.get('Password')?.valid"><i>Password is Required!!</i></span>
+        <input type="Password" autocomplete="current-Password" formControlName="Password">
+
+        <input class="poppins-semibold" type="submit" value="Login" [disabled]="!form.valid">
+    </form>
+
+</div>

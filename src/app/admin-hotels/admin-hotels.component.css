@@ -1,0 +1,117 @@
+.container {
+    height: 90vh;
+    padding: 32px;
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    justify-items: center;
+    font-size: small;
+    overflow-y: scroll;
+  }
+    .hotel{
+      display: flex;
+      width: 500px;
+      height: 150px;
+      background-color: rgb(219, 215, 215);
+      border-radius: 12px;
+    }
+    .hotel img{
+      height: 100%;
+      width: 30%;
+      border-radius: 10px  0 0px  10px;
+    }
+    .hotel-details {
+      width: 100%;
+      padding: 12px;
+      gap: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      /* line-height: normal;// */
+    }
+    
+    .hotel-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .hotel-destination {
+      font-size: 12px;
+      color: rgb(53, 52, 52);
+      font-weight: 700;
+    }
+    .hotel-text {
+      margin-top: 8px;
+    }
+    .hotel-description {
+      color: rgb(34, 33, 33);
+    }
+    .hotel-price {
+      float: right;
+      font-size: 14px;
+      color: rgb(61, 61, 61);
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .hotel-rating img {
+      object-fit: cover;
+     height: 24px;
+     width: 24px;
+    }
+    .hotel-rating {
+      align-items: baseline;
+      margin-top: 4px;
+      display: flex;
+      gap: 4px;
+    }
+
+    
+    .hotel-update {
+      border-radius: 5px;
+      margin:8px 0 ;
+      float: right;
+      padding: 8px 16px;
+      font-weight: bold;
+      border:none;
+      cursor: pointer;
+      color:  rgb(25, 165, 25); 
+    }
+    .hotel-update:hover {
+      background-color: rgb(25, 165, 25); 
+      color: rgb(255, 255, 255);
+    }
+  
+    .hotel-delete {
+      border-radius: 5px;
+      margin: 8px;
+      float: right;
+      padding: 8px 16px;
+      font-weight: bold;
+      border:none;
+      cursor: pointer;
+      color:  rgb(185, 25, 25); 
+    }
+    .hotel-delete:hover {
+      background-color:  rgb(214, 38, 38);
+      color: rgb(245, 227, 227);
+    }
+    .buttons{
+      float: right;
+      width: 100%;
+    }
+  
+    @media screen and (max-width: 1000px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media screen and (max-width: 768px) {
+      .container {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+    

@@ -1,0 +1,35 @@
+<div class="container">
+   
+    <form [formGroup]="form">
+        <h4>Add Tour</h4>
+        <div class="tour-prop">
+            <label for="">Tour Name</label>
+            <span *ngIf="form.get('tourname')?.touched && !form.get('tourname')?.valid "
+            ><i class="poppins-italics">*Tour Name Required!!</i></span>
+            <input type="text"     formControlName="tourname">
+        </div>
+        <div class="tour-prop">
+            <label for="">Tour Destination</label>
+            <span *ngIf="form.get('tourdestination')?.touched && !form.get('tourdestination')?.valid "
+            ><i class="poppins-italics">*Tour Destination Required!!</i></span>
+            <input type="text"    formControlName="tourdestination">
+        </div>
+
+        <div class="tour-prop">
+            <span *ngIf="form.get('tourdescription')?.touched && !form.get('tourdescription')?.valid "
+            ><i class="poppins-italics">*Tour Description Required!!</i></span>
+            <label for="">Tour Description</label>
+            <input type="text"    formControlName="tourdescription">
+        </div>
+
+        <div class="tour-prop">
+            <span *ngIf="form.get('tourprice')?.touched && !form.get('tourprice')?.valid "
+            ><i class="poppins-italics">*Tour Price Required!!</i></span>
+            <label for="">Tour Price</label>
+            <input type="number"    formControlName="tourprice">
+        </div>
+
+
+        <button [disabled]="!form.valid">Submit</button>
+    </form>
+</div>

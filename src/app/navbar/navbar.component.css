@@ -1,0 +1,71 @@
+nav {
+  display: flex;
+  width: 90%;
+  min-width: 480px;
+  height:10vh;
+  justify-content: space-between;
+  padding: 0 16px;
+  align-items: center;
+  margin: auto;
+  /* background-color: rgb(219, 215, 215); */
+  color: rgb(29, 27, 27);
+  font-weight: 400;
+}
+.links,
+.auth-links {
+  display: flex;
+  gap: 20px;
+}
+div a {
+  text-decoration: none;
+  cursor: pointer;
+  color: rgb(29, 27, 27);
+  padding: 12px;
+}
+/* Initial setup */
+.mobile-menu {
+  display: none; /* Hidden by default */
+}
+
+.mobile-links {
+  right: 20px;
+  top: 50px;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.mobile-links a:hover {
+  background-color: #ddd;
+}
+
+/* Show mobile links when mobile menu is hovered */
+.mobile-menu:hover .mobile-links {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile view */
+@media screen and (max-width: 1000px) {
+  .links,
+  .auth-links {
+    display: none; /* Hide regular links */
+  }
+
+  .mobile-menu {
+    display: block; /* Show mobile menu icon */
+  }
+
+  .mobile-menu img {
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+  }
+}
+.active{
+  background-color: rgb(179, 179, 190);
+  border-radius: 5px;
+  padding: 4px 8px;
+}

@@ -1,0 +1,20 @@
+<div class="header">All Hotels</div>
+<div class="container">
+    <div *ngFor="let hotel of hotels">
+        <div class="hotel-card">
+            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGhvdGVsfGVufDB8fDB8fHww"
+                alt="">
+            <div class="hotel-details">
+                <div>
+                    <p class="hotel-name">{{hotel.Name}}</p>
+                    <p class="hotel-destination">{{hotel.Location}}</p>
+                </div>
+                <div class="hotel-rating">
+                    <div *ngFor="let num of gethotelRating(hotel.StarRating)">
+                        <img src="../../assets/star.svg" alt="star">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

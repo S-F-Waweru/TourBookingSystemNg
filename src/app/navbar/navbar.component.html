@@ -1,0 +1,33 @@
+
+<nav>
+    <h4>Sam's Tours</h4>
+    <div class="links">
+        <a [routerLink]="['']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Home</a>
+        <a [routerLink]="['tours']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Tours</a>
+        <a [routerLink]="['tours', 'addtour']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"> addTours</a>
+
+        <a [routerLink]="['hotels']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Hotels</a>
+        <a [routerLink]="['bookings']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Booking</a>
+    </div>
+    <div class="auth-links">
+        <a [routerLink]="['login']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Login</a>
+        <a [routerLink]="['register']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Register</a>
+
+    </div>
+    <div class="mobile-menu">
+        <img src="../../assets/menu-outline.svg" alt="" srcset="">
+        <div class="mobile-links">
+            <a [routerLink]="['']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Home</a>
+        <a [routerLink]="['tours']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Tours</a>
+        <a [routerLink]="['tours', 'addtour']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"> addTours</a>
+
+        <a [routerLink]="['hotels']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Hotels</a>
+        <a [routerLink]="['bookings']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Booking</a>
+            <hr>
+            <a [routerLink]="['login']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Login</a>
+            <a [routerLink]="['register']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Register</a>
+    
+        </div>
+    </div>
+
+</nav>

@@ -1,0 +1,27 @@
+<div class="container">
+   
+    <form [formGroup]="form">
+        <h4>Add Hotel</h4>
+        <div class="tour-prop">
+            <label for="">The Great Rift Tour </label>
+        </div>
+        <div class="tour-prop">
+           <select name="" id="hotels">
+            <option value="">Hotel 1</option>
+            <option value="">Hotel 2</option>
+            <option value="">Hotel 3</option>
+            <option value="">Hotel 4</option>
+           </select>
+        </div>
+
+        <div class="tour-prop">
+            <span *ngIf="form.get('bookingdate')?.touched && !form.get('bookingdate')?.valid "
+            ><i class="poppins-italics">*star ratingRequired!!</i></span>
+            <label for="">Booking Date</label>
+            <input type="date"    formControlName="bookingdate">
+        </div>
+
+
+        <button [disabled]="!form.valid">Book Now</button>
+    </form>
+</div>

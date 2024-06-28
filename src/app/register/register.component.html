@@ -1,0 +1,21 @@
+<div class="container">
+<h4>Register Form</h4>
+<form (ngSubmit)="onSubmit()" [formGroup]="form"  >
+    <label for="">Name</label>
+    <span *ngIf="form.get('Name')?.touched && !form.get('Name')?.valid"
+    ><i>Name is required</i></span>
+    <input type="text" autocomplete="Name" formControlName = "Name">
+
+    <label for="">Email</label>
+    <span *ngIf="form.get('Email')?.touched && !form.get('Email')?.valid"
+    ><i>Email is required</i></span>
+    <input type="Email"  formControlName = "Email">
+
+    <label for="">Password</label>
+    <span *ngIf="form.get('Password')?.touched && !form.get('Password')?.valid"
+    ><i>Password is required</i></span>
+    <input type="Password" formControlName = "Password" autocomplete="current-Password">
+
+    <input  class="poppins-semibold" type="submit" value="Register" [disabled]="!form.valid">
+</form>
+</div>

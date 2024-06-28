@@ -1,0 +1,28 @@
+<div class="container">
+   
+    <form [formGroup]="form">
+        <h4>Add Hotel</h4>
+        <div class="hotel-prop">
+            <label for="">Hotel Name</label>
+            <span *ngIf="form.get('hotelname')?.touched && !form.get('hotelname')?.valid "
+            ><i class="poppins-italics">Hotel name Required!!</i></span>
+            <input type="text"     formControlName="hotelname">
+        </div>
+        <div class="hotel-prop">
+            <label for="">Hotel Location</label>
+            <span *ngIf="form.get('hotellocation')?.touched && !form.get('hotellocation')?.valid "
+            ><i class="poppins-italics">*Hotel locationRequired!!</i></span>
+            <input type="text"    formControlName="hotellocation">
+        </div>
+
+        <div class="hotel-prop">
+            <span *ngIf="form.get('starrating')?.touched && !form.get('starrating')?.valid "
+            ><i class="poppins-italics">*star ratingRequired!!</i></span>
+            <label for="">Star Rating</label>
+            <input type="number"    formControlName="starrating">
+        </div>
+
+
+        <button [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
