@@ -15,13 +15,14 @@ export class HotelsService {
     return this.http.get<Hotel[]>(this.Base_URL)
   }
   getHotel(id:string):Observable<Hotel>{
+    console.log("Reachitng to get")
     return this.http.get<Hotel>(this.Base_URL+id)
   }
   addHotel(addHotel:HotelReq):Observable<HotelResponse>{
-    return this.http.post<HotelResponse>(this.Base_URL, {addHotel})
+    return this.http.post<HotelResponse>(this.Base_URL, addHotel)
   }
   updateHotel(id:string,updatedHotel:HotelReq):Observable<HotelResponse>{
-    return this.http.put<HotelResponse>(this.Base_URL+id, {})
+    return this.http.put<HotelResponse>(this.Base_URL+id, updatedHotel)
   }
   deleteHotel(id :string):Observable<HotelResponse>{
     return this.http.delete<HotelResponse>(this.Base_URL+id)

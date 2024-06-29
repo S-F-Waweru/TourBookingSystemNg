@@ -1,7 +1,7 @@
 <div class="container">
    
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <h4>Add Tour</h4>
+        <h4>Update Tour</h4>
         <div class="tour-prop">
             <label for="">Tour Name</label>
             <span *ngIf="form.get('Name')?.touched && !form.get('Name')?.valid "
@@ -30,6 +30,6 @@
         </div>
 
 
-        <button [disabled]="!form.valid">Submit</button>
+        <button [disabled]="!form.valid">Update</button>
     </form>
 </div>

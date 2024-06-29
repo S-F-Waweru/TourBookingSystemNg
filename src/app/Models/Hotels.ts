@@ -1,5 +1,5 @@
 export interface Hotel {
-    Id :number,
+    Id :string,
     Name :string,
     Location : string,
     StarRating :number

@@ -12,7 +12,7 @@
                 <p class="tour-description">{{tour.Description}}</p>
                 <div class="prices">
                 <p class="tour-price" >{{tour.Price | currency :'Ksh '}}</p>
-                <p class="tour-book">Book Now</p>
+                <p (click)="addBooking(tour.Id)" class="tour-book">Book Now</p>
                 </div>
         </div>
     </div>

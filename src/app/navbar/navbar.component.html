@@ -4,14 +4,21 @@
     <div class="links">
         <a [routerLink]="['']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Home</a>
         <a [routerLink]="['tours']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Tours</a>
-        <a [routerLink]="['tours', 'addtour']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"> addTours</a>
-
         <a [routerLink]="['hotels']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Hotels</a>
-        <a [routerLink]="['bookings']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Booking</a>
+        <a *ngIf="ifLoggedIn() && !ifAdmin()" [routerLink]="['bookings']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Booking</a>
+        <a *ngIf="ifLoggedIn() && ifAdmin()"[routerLink]="['tours', 'addtour']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"> Add Tour</a>
+        <a *ngIf="ifLoggedIn() && ifAdmin()" [routerLink]="['hotels', 'addhotel']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"> Add Hotel</a>
+        <a *ngIf="ifLoggedIn() && ifAdmin()" [routerLink]="['hotels', 'admin']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">All Hotels</a>
+        <a *ngIf="ifLoggedIn() && ifAdmin()" [routerLink]="['bookings']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">All Bookings</a>
+        <a *ngIf="ifLoggedIn() && ifAdmin()" [routerLink]="['tours', 'admin']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">All tours</a>
+
+
     </div>
     <div class="auth-links">
-        <a [routerLink]="['login']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Login</a>
-        <a [routerLink]="['register']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Register</a>
+        <a *ngIf="ifLoggedIn() && ifAdmin()"    [routerLink]="['admin']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Admin</a>
+        <a *ngIf="!ifLoggedIn()"    [routerLink]="['login']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Login</a>
+        <a *ngIf="!ifLoggedIn()" [routerLink]="['register']"[routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">Register</a>
+        <a *ngIf="ifLoggedIn()" (click)="logout()">LogOut</a>
 
     </div>
     <div class="mobile-menu">

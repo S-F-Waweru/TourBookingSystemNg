@@ -25,6 +25,8 @@ export class RegisterComponent {
     console.log("reachinghere")
    this.as.registerUser(this.form.value).subscribe(res=>{
     console.log(res.message)
+   },err =>{
+    console.log(err.message)
    })
   }
 

@@ -14,7 +14,9 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   constructor(private as:AuthServiceService, private router:Router){}
   form! :FormGroup
+  userRole!:string
   ngOnInit(): void {
+    this.userRole = 'customer'
     this.form = new FormGroup ({
       Email : new FormControl(null, Validators.required),
       Password:new FormControl(null, [Validators.required, this.passwordValidator.bind(this)])
@@ -23,16 +25,33 @@ export class LoginComponent {
 
   onSubmit(){
     console.log(this.form)
+    const token = localStorage.getItem('token')
+    if(!token){
     this.as.loginUser(this.form.value).subscribe(res =>{
+      this.as.login()
       console.log(res.message, res.token)
       localStorage.setItem('token', res.token)
+
+      console.log(res.role)
+      this.userRole = res.role
+      localStorage.setItem('role', res.role)
+      console.log( "USer Id"+ res.userId)
+      localStorage.setItem('userId', res.userId)
+
+
       if (res.token){
         this.router.navigate(['tours'])
       }
-    })
+
+    },err =>{
+      console.log(err.error)
+    })    }else{
+      this.router.navigate([''])
+    }
 
 
   }
+
 
   passwordValidator(control:FormControl):{[x:string]:Boolean} | null{
     const value = control.value;

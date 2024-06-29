@@ -1,0 +1,18 @@
+.container{
+    width: 80%;
+    height: 80vh;
+    background-color: brown;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+table{
+    width: 100%;
+    background-color: bisque;
+    justify-content: space-between;
+}
+thead{
+    width: 100%;
+    justify-content: space-around;
+    background-color: rgb(223, 129, 15);
+}

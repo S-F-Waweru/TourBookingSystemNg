@@ -17,11 +17,11 @@ export class BookingsService {
   getBooking(id:string):Observable<Booking>{
     return this.http.get<Booking>(this.Base_URL+id)
   }
-  getUserBooking(id:string):Observable<Booking>{
-    return this.http.get<Booking>(this.Base_URL+"user/"+id)
+  getUserBooking(id:string):Observable<Booking[]>{
+    return this.http.get<Booking[]>(this.Base_URL+"user/"+id)
   }
   addBooking(addBooking:BookingReq):Observable<BookingResponse>{
-    return this.http.post<BookingResponse>(this.Base_URL, {addBooking})
+    return this.http.post<BookingResponse>(this.Base_URL, addBooking)
   }
   updateBooking(id:string,updatedBooking:BookingReq):Observable<BookingResponse>{
     return this.http.put<BookingResponse>(this.Base_URL+id, updatedBooking)

@@ -1,16 +1,16 @@
 <div class="container">
    
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <h4>Add Booking</h4>
+        <h4>Update Booking</h4>
         <div class="tour-prop">
-            <label>Tour Name: {{ tourname }}</label>
-            <input type="hidden" formControlName="TourId" [value]="tourId">
+            <label>Tour Name: </label>
+            <input type="hidden" formControlName="TourId" [value]="">
           </div>
           
         <div class="tour-prop">
             <select formControlName="HotelId" id="hotels">
               <option selected  disabled>Select a Hotel For the Tour</option>
-              <option *ngFor="let hotel of hotels" [value]="hotel.Id">{{ hotel.Name }}</option>
+              <option ></option>
             </select>
             <span *ngIf="form.get('HotelId')?.touched && !form.get('HotelId')?.valid">
               <i class="poppins-italics">*Hotel selection is required!!</i>
@@ -25,6 +25,8 @@
         </div>
 
 
-        <button>Book Now</button>
+        <button>Update Booking</button>
+        <button class="tour-delete">Cancel Booking</button>
+
     </form>
 </div>

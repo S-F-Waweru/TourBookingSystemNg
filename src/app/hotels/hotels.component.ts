@@ -21,8 +21,9 @@ export class HotelsComponent implements OnInit {
    })
   }
 
-  gethotelRating(starRating :any) {
+  gethotelRating(starRating :number) {
     console.log(typeof starRating)
       return Array(starRating).fill(0).map((x, i) => i)
   }
+
 }
