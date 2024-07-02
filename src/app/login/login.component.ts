@@ -3,49 +3,41 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthServiceService } from '../Services/auth-service.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../State';
+import { AuthActions } from '../State/Actions/Auth.actions';
+import { erorrSelectoer } from '../State/Selector/auth.selector';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule,FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  constructor(private as:AuthServiceService, private router:Router){}
-  form! :FormGroup
-  userRole!:string
+  constructor(private store: Store<AppState>, private router: Router) { }
+
+  form!: FormGroup
+  userRole!: string
   ngOnInit(): void {
     this.userRole = 'customer'
-    this.form = new FormGroup ({
-      Email : new FormControl(null, Validators.required),
-      Password:new FormControl(null, [Validators.required, this.passwordValidator.bind(this)])
+    this.form = new FormGroup({
+      Email: new FormControl(null, Validators.required),
+      Password: new FormControl(null, [Validators.required, this.passwordValidator.bind(this)])
     })
   }
+  error$ = this.store.select(erorrSelectoer)
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.form)
     const token = localStorage.getItem('token')
-    if(!token){
-    this.as.loginUser(this.form.value).subscribe(res =>{
-      this.as.login()
-      console.log(res.message, res.token)
-      localStorage.setItem('token', res.token)
+    if (!token) {
 
-      console.log(res.role)
-      this.userRole = res.role
-      localStorage.setItem('role', res.role)
-      console.log( "USer Id"+ res.userId)
-      localStorage.setItem('userId', res.userId)
+      this.store.dispatch(AuthActions.login({ user: this.form.value }))
 
 
-      if (res.token){
-        this.router.navigate(['tours'])
-      }
-
-    },err =>{
-      console.log(err.error)
-    })    }else{
+    } else {
       this.router.navigate([''])
     }
 
@@ -53,20 +45,20 @@ export class LoginComponent {
   }
 
 
-  passwordValidator(control:FormControl):{[x:string]:Boolean} | null{
+  passwordValidator(control: FormControl): { [x: string]: Boolean } | null {
     const value = control.value;
     if (value == undefined) {
       console.log('Value undefined')
-      return  {passwordValidator :true} ; // Or handle this case as per your application's logic
+      return { passwordValidator: true }; // Or handle this case as per your application's logic
     }
     let hasDigit = false;
     let hasLowerCase = false;
     let hasUpperCase = false;
     let hasSpecialChar = false;
-  
+
     for (let i = 0; i < control.value.length; i++) {
       let charCode = control.value.charCodeAt(i);
-  
+
       if (charCode >= 48 && charCode <= 57) {
         hasDigit = true;
       } else if (charCode >= 97 && charCode <= 122) {
@@ -83,14 +75,14 @@ export class LoginComponent {
       }// check patterns
     }
 
-    if (hasDigit && hasLowerCase && hasUpperCase && hasSpecialChar){
+    if (hasDigit && hasLowerCase && hasUpperCase && hasSpecialChar) {
       console.log('good control')
       return null
-    }else{
+    } else {
       console.log('bad control')
 
-      return {passwordValidator :true}
+      return { passwordValidator: true }
     }
-  
+
   }
 }

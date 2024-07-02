@@ -1,5 +1,6 @@
 <div class="container">
     <h4>Login Form</h4>
+    <p>{{error$ |async}}</p>
     <form (ngSubmit)="onSubmit()" [formGroup]="form">
         <label for="">Email</label>
         <span *ngIf="form.get('Email')?.touched && !form.get('Email')?.valid"><i>Email is Required!!</i></span>
