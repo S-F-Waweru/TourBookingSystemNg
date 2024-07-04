@@ -16,6 +16,7 @@ export class NavbarComponent {
   userRole = localStorage.getItem('role')
   logout() {
     console.log('Log Out');
+    localStorage.clear()
     this.as.logout()
   }
 
@@ -32,6 +33,7 @@ export class NavbarComponent {
 
   ifAdmin() {
     // console.log(this.userRole);
+    // console.log(this.userRole)
     
     if (this.userRole === 'admin') {
       return true

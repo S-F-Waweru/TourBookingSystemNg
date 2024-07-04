@@ -3,6 +3,10 @@ import { ToursService } from '../Services/tours.service';
 import { CommonModule } from '@angular/common';
 import { Tour } from '../Models/Tour';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../State';
+import { ToursAction } from '../State/Actions/tours.actions';
+import { toursArraySelector } from '../State/Selector/tour.selector';
 
 @Component({
   selector: 'app-tours',
@@ -12,14 +16,18 @@ import { Router } from '@angular/router';
   styleUrl: './tours.component.css'
 })
 export class ToursComponent  implements OnInit {
-  constructor(private ts:ToursService,private router:Router){}
+  constructor(
+    private store:Store<AppState>,
+    private ts :ToursService,
+    private router:Router){}
   tours! :Tour[]
+  
 
   ngOnInit(): void {
-    this.ts.getTours().subscribe(tours =>{
-      console.log(tours)
-      this.tours = tours
-    })
+   this.store.dispatch(ToursAction.getTour())
+   this.store.select(toursArraySelector).subscribe(res =>{
+    this.tours = res
+   })
   }
 
   addBooking(id :string){

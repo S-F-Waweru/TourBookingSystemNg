@@ -38,4 +38,20 @@ export class AuthEffects {
 
         )
     })
+
+
+    registerUser$ = createEffect(()=>{
+        return this.action$.pipe(
+            ofType(AuthActions.register),
+            exhaustMap(({user}) => this.auth.registerUser(user).pipe(
+                map(res =>{
+                    this.router.navigate(['login'])
+                     return AuthActions.registerSuccess({response:res})
+                }),
+                catchError(error => of(AuthActions.
+                            registerFailure({message: error.error.message})
+                ))
+            ))
+        )
+    })
 }

@@ -9,10 +9,12 @@ import { provideStore } from '@ngrx/store';
 import { authReducer } from './State/Reducers/auth.reducers';
 import { AuthEffects } from './State/Effects/auth.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { tourReducer } from './State/Reducers/tours.reducers';
+import { ToursEffect } from './State/Effects/tour.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
     provideHttpClient(withInterceptors([TokenInterceptor])),
-    provideStore({ auth: authReducer }),
-    provideEffects([AuthEffects]), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })],
+    provideStore({ auth: authReducer , tours : tourReducer}),
+    provideEffects([AuthEffects, ToursEffect]), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })],
 };

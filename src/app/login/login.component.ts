@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../State';
 import { AuthActions } from '../State/Actions/Auth.actions';
-import { erorrSelectoer } from '../State/Selector/auth.selector';
+import { erorrLoginSelector } from '../State/Selector/auth.selector';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +27,7 @@ export class LoginComponent {
       Password: new FormControl(null, [Validators.required, this.passwordValidator.bind(this)])
     })
   }
-  error$ = this.store.select(erorrSelectoer)
+  error$ = this.store.select(erorrLoginSelector)
 
   onSubmit() {
     console.log(this.form)

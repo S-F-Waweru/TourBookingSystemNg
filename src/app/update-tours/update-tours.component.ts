@@ -37,7 +37,8 @@ export class UpdateToursComponent implements OnInit {
             console.log(tour)
             const gottentour = tour;
             console.log(gottentour);
-
+          
+            
             if (gottentour) {
               console.log(gottentour.Name)
               console.log(this.form.value)

@@ -1,7 +1,11 @@
 <div class="container">
    
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <p *ngIf="(successMessage$|async)"
+        >{{successMessage$ | async}}</p>
         <h4>Add Tour</h4>
+        <p *ngIf="(errorMessage$|async)"
+        >{{errorMessage$ | async}}</p>
         <div class="tour-prop">
             <label for="">Tour Name</label>
             <span *ngIf="form.get('Name')?.touched && !form.get('Name')?.valid "
